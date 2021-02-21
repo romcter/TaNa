@@ -5,13 +5,6 @@ import com.tana.TaNa.entity.enums.Status;
 import com.tana.TaNa.entity.model.User;
 import lombok.Data;
 
-/**
- * DTO class for user requests by ROLE_ADMIN
- *
- * @author Eugene Suleimanov
- * @version 1.0
- */
-
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AdminUserDto {
