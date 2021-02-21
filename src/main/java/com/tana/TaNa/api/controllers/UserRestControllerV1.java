@@ -1,12 +1,9 @@
 package com.tana.TaNa.api.controllers;
 
 import com.tana.TaNa.dto.UserDto;
-import com.tana.TaNa.entity.model.User;
 import com.tana.TaNa.mapper.Mapper;
 import com.tana.TaNa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +20,7 @@ public class UserRestControllerV1 {
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
-        User user = userService.findById(id);
-
-        if(user == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        UserDto result = Mapper.USER.map(user);
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    public UserDto getUserById(@PathVariable(name = "id") Long id){
+        return Mapper.USER.map(userService.getUserById(id));
     }
 }

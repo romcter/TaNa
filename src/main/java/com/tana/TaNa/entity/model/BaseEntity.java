@@ -1,7 +1,9 @@
 package com.tana.TaNa.entity.model;
 
 import com.tana.TaNa.entity.enums.Status;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,7 +11,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BaseEntity {
 
     @Id

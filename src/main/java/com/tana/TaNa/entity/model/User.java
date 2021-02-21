@@ -1,13 +1,18 @@
 package com.tana.TaNa.entity.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
 public class User extends BaseEntity {
 
     @Column(name = "username")
@@ -30,4 +35,5 @@ public class User extends BaseEntity {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
+
 }
