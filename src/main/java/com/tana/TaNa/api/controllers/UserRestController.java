@@ -1,22 +1,29 @@
 package com.tana.TaNa.api.controllers;
 
 import com.tana.TaNa.dto.UserDto;
+import com.tana.TaNa.entity.model.User;
 import com.tana.TaNa.mapper.Mapper;
 import com.tana.TaNa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/v1/users/")
-public class UserRestControllerV1 {
+public class UserRestController {
+
     private final UserService userService;
 
     @Autowired
-    public UserRestControllerV1(UserService userService) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostMapping(value = "create/")
+    public UserDto register(@RequestBody @Valid UserDto userDto){
+        User user = Mapper.USER.map(userDto);
+        return Mapper.USER.map(userService.register(user));
     }
 
     @GetMapping(value = "{id}")
