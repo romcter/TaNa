@@ -1,7 +1,6 @@
 package com.tana.TaNa.api.controllers;
 
 import com.tana.TaNa.dto.UserDto;
-import com.tana.TaNa.entity.model.User;
 import com.tana.TaNa.mapper.Mapper;
 import com.tana.TaNa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,7 @@ public class UserRestController {
 
     @PostMapping(value = "create/")
     public UserDto register(@RequestBody @Valid UserDto userDto){
-        User user = Mapper.USER.map(userDto);
-        return Mapper.USER.map(userService.register(user));
+        return Mapper.USER.map(userService.register(userDto));
     }
 
     @GetMapping(value = "{id}")

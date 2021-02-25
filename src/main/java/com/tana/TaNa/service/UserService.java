@@ -1,12 +1,13 @@
 package com.tana.TaNa.service;
 
+import com.tana.TaNa.dto.UserDto;
 import com.tana.TaNa.entity.model.User;
 
 import java.util.List;
 
 public interface UserService {
 
-    User register(User user);
+    User register(UserDto userDto);
 
     List<User> getAll();
 

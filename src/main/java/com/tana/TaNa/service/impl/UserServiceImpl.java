@@ -1,10 +1,12 @@
 package com.tana.TaNa.service.impl;
 
+import com.tana.TaNa.dto.UserDto;
 import com.tana.TaNa.entity.model.Role;
 import com.tana.TaNa.entity.enums.Status;
 import com.tana.TaNa.entity.model.User;
 import com.tana.TaNa.entity.repository.RoleRepository;
 import com.tana.TaNa.entity.repository.UserRepository;
+import com.tana.TaNa.mapper.Mapper;
 import com.tana.TaNa.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(User user) {
+    public User register(UserDto userDto) {
+        User user = Mapper.USER.map(userDto);
         Role roleUser = roleRepository.findByName("ROLE_USER");
         List<Role> userRoles = new ArrayList<>();
         userRoles.add(roleUser);
